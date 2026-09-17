@@ -1,0 +1,3 @@
+package com.studenttracker.util;
+import java.time.LocalDate; import java.time.format.DateTimeParseException;
+public final class InputValidator { private InputValidator(){} public static void requireText(String s,String field){if(s==null||s.isBlank()) throw new IllegalArgumentException(field+" cannot be empty.");} public static void requireHours(double h){if(h<=0||h>24) throw new IllegalArgumentException("Estimated hours must be between 0 and 24.");} public static LocalDate parseDate(String s){try{return LocalDate.parse(s);}catch(DateTimeParseException e){throw new IllegalArgumentException("Date must use YYYY-MM-DD format.");}} }

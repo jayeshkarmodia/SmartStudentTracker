@@ -1,0 +1,3 @@
+package com.studenttracker.model;
+import java.time.LocalDateTime;
+public class StudySession { private int id; private String subject; private LocalDateTime startTime,endTime; private int minutes; public StudySession(int id,String subject,LocalDateTime start,LocalDateTime end,int minutes){this.id=id;this.subject=subject;this.startTime=start;this.endTime=end;this.minutes=minutes;} public StudySession(String subject,LocalDateTime start,LocalDateTime end,int minutes){this(0,subject,start,end,minutes);} public int getId(){return id;} public String getSubject(){return subject;} public LocalDateTime getStartTime(){return startTime;} public LocalDateTime getEndTime(){return endTime;} public int getMinutes(){return minutes;} }

@@ -1,0 +1,3 @@
+package com.studenttracker;
+import com.studenttracker.model.*; import com.studenttracker.service.SchedulerService; import org.junit.jupiter.api.Test; import java.time.LocalDate; import java.util.*; import static org.junit.jupiter.api.Assertions.*;
+class SchedulerServiceTest {@Test void highPriorityNearDeadlineShouldBeRecommended(){var s=new SchedulerService();var a=new Task("Far","Java","",Priority.LOW,LocalDate.now().plusDays(10),2);var b=new Task("Soon","Java","",Priority.HIGH,LocalDate.now().plusDays(1),2);assertEquals("Soon",s.recommend(List.of(a,b)).orElseThrow().getTitle());}@Test void overdueGetsExtraUrgency(){var s=new SchedulerService();var t=new Task("Late","OS","",Priority.MEDIUM,LocalDate.now().minusDays(1),2);assertTrue(s.score(t)>40);}}

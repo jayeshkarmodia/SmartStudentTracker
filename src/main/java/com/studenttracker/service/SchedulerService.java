@@ -1,0 +1,3 @@
+package com.studenttracker.service;
+import com.studenttracker.model.*; import java.time.LocalDate; import java.time.temporal.ChronoUnit; import java.util.*;
+public class SchedulerService { public double score(Task t){long days=ChronoUnit.DAYS.between(LocalDate.now(),t.getDeadline());double urgency=days<0?40:days==0?35:days==1?30:days<=3?22:days<=7?12:5;double priority=t.getPriority().getWeight()*10;double effort=Math.max(0,10-Math.min(10,t.getEstimatedHours()));double overdue=days<0?20:0;return priority+urgency+effort+overdue;} public Optional<Task> recommend(List<Task> tasks){return tasks.stream().filter(t->t.getStatus()!=TaskStatus.COMPLETED).max(Comparator.comparingDouble(this::score));} }
